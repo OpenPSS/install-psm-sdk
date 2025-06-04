@@ -1,0 +1,31 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Weekly, at 5:45 AM on Friday (somewhat randomly chosen).
+    - cron: '45 5 * * 5'
+  workflow_dispatch:
+
+jobs:
+  psm_2_00:
+    runs-on: windows-latest
+    name: 'install 2.00 psm sdk'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install PSM
+        uses: ./
+        with:
+            version: 2.00.00
+  psm_1_21:
+    runs-on: windows-latest
+    name: 'install 1.21 psm sdk'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install PSM
+        uses: ./
+        with:
+            version: 1.21.02
