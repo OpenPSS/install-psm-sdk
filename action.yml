@@ -7,12 +7,14 @@ inputs:
       default: 2.00.00
 runs:
     using: composite
-    main: 'dist/install_psm.py'
     steps:
-    - id: install-psm
-      run: |
-        pip3 install psutil requests
-        python3 dist/install_psm.py ${{ inputs.version }}
+    - name: Install dependancies
+      id: install-deps
+      run: pip3 install psutil requests
+      shell: pwsh
+    - name: Run install script
+      id: install-psm
+      run: python3 ${{ github.action_path }}/dist/install_psm.py ${{ inputs.version }}
       shell: pwsh
 branding:
     icon: star
