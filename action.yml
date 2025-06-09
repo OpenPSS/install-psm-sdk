@@ -11,7 +11,7 @@ runs:
     - id: install-psm
       run: |
         pip3 install psutil requests
-        python3 install_psm.py ${{ inputs.version }}
+        python3 dist/install_psm.py ${{ inputs.version }}
       shell: pwsh
 branding:
     icon: star
