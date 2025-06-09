@@ -14,7 +14,7 @@ runs:
       shell: pwsh
     - name: Run install script
       id: install-psm
-      run: python3 ${{ github.action_path }}/dist/install_psm.py ${{ inputs.version }}
+      run: python3 ${{ github.action_path }}dist/install_psm.py ${{ inputs.version }}
       shell: pwsh
 branding:
     icon: star
