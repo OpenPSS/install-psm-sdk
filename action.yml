@@ -7,6 +7,7 @@ inputs:
       default: 2.00.00
 runs:
     using: composite
+    main: 'dist/install_psm.py'
     steps:
     - id: install-psm
       run: |
