@@ -45,12 +45,16 @@ shutil.rmtree('software')
 print("Installing: "+SDK_EXE)
 p = subprocess.Popen([SDK_EXE, "/S"], stderr=subprocess.PIPE, stdout=subprocess.PIPE)
 
+
 while p.poll() is None:
     for proc in psutil.process_iter():
         if proc.name() == "dpinst.exe":
-            print("Ending process: "+proc.name())
-            proc.kill()
-
+            try:
+                print("Ending process: "+proc.name())
+                proc.kill()
+            except psutil.NoSuchProcess:
+                pass
+    
 status = p.poll()
 if not status == 0:
     print("Got status: ("+str(status)+")")
